@@ -14,10 +14,10 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: 'checkstyle'
+//apply plugin: 'checkstyle'
 apply plugin: 'jacoco'
 apply plugin: 'eclipse'
-apply plugin: 'pmd'
+//apply plugin: 'pmd'
 
 apply from: "$rootDir/gradle/additional-artifacts.gradle"
 apply from: "$rootDir/gradle/dependencies.gradle"
@@ -37,8 +37,8 @@ dependencies {
     ext.guiceVersion = '4.2.3'
 
     compile ("org.apache.jclouds:jclouds-core:${jcloudsVersion}")
-    compile ("com.google.inject:guice:${guiceVersion}")
-    compile ("com.google.inject.extensions:guice-assistedinject:${guiceVersion}")
+    //compile ("com.google.inject:guice:${guiceVersion}")
+    //compile ("com.google.inject.extensions:guice-assistedinject:${guiceVersion}")
     compile ("com.google.auto.value:auto-value-annotations:${autoValueVersion}")
     annotationProcessor ("com.google.auto.value:auto-value:${autoValueVersion}")
     compile ("com.google.auto.service:auto-service-annotations:${autoServiceVersion}")
@@ -71,16 +71,16 @@ jar {
     }
 }
 
-checkstyle {
-    toolVersion = "6.13"
-}
+//checkstyle {
+//    toolVersion = "6.13"
+//}
 
-pmd {
-    ruleSetConfig = resources.text.fromFile(rootProject.file('config/pmd/pmd.xml'))
-    consoleOutput = true
-    ignoreFailures = false
-    ruleSets = []
-}
+//pmd {
+//    ruleSetConfig = resources.text.fromFile(rootProject.file('config/pmd/pmd.xml'))
+//    consoleOutput = true
+//    ignoreFailures = false
+//    ruleSets = []
+//}
 
 jacocoTestReport {
     reports {
@@ -89,12 +89,12 @@ jacocoTestReport {
     }
 }
 
-tasks.withType(Pmd) {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
+//tasks.withType(Pmd) {
+//    reports {
+//        xml.enabled = true
+//        html.enabled = true
+//    }
+//}
 
 tasks.withType(JavaCompile) {
     options.compilerArgs += ['-Xlint:-options']
